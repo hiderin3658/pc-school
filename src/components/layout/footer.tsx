@@ -1,16 +1,21 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 
 export function Footer() {
+  const { t } = useLanguage()
+  
   return (
     <footer className="bg-gray-900 text-white pt-12 pb-6">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
             <h3 className="text-xl font-bold mb-4">TechKids</h3>
             <p className="text-gray-400 mb-4">
-              次世代を担う子供たちのためのプログラミングスクール
+              {t('schoolDesc')}
             </p>
             <div className="flex space-x-4">
               <a
@@ -46,54 +51,31 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">コース</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('coursesTitle')}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/courses" className="text-gray-400 hover:text-white">
-                  コース一覧
+                  {t('coursesList')}
                 </Link>
               </li>
               <li>
                 <Link href="/curriculum" className="text-gray-400 hover:text-white">
-                  カリキュラム
+                  {t('curriculum')}
                 </Link>
               </li>
               <li>
                 <Link href="/faq" className="text-gray-400 hover:text-white">
-                  よくある質問
+                  {t('faq')}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Certifications */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">認証</h4>
-            <div className="flex flex-wrap gap-4">
-              <div className="bg-white p-2 rounded">
-                <Image
-                  src="/certification1.png"
-                  alt="認証バッジ1"
-                  width={80}
-                  height={80}
-                />
-              </div>
-              <div className="bg-white p-2 rounded">
-                <Image
-                  src="/certification2.png"
-                  alt="認証バッジ2"
-                  width={80}
-                  height={80}
-                />
-              </div>
-            </div>
-          </div>
-
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">お問い合わせ</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('contactTitle')}</h4>
             <p className="text-gray-400 mb-2">
-              平日 10:00-18:00
+              {t('businessHours')}
             </p>
             <p className="text-gray-400">
               contact@techkids.jp
@@ -105,17 +87,17 @@ export function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm">
-              © 2024 TechKids. All rights reserved.
+              {t('copyright')}
             </div>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <Link href="/privacy" className="text-gray-400 hover:text-white text-sm">
-                プライバシーポリシー
+                {t('privacyPolicy')}
               </Link>
               <Link href="/terms" className="text-gray-400 hover:text-white text-sm">
-                利用規約
+                {t('termsOfService')}
               </Link>
               <Link href="/sitemap" className="text-gray-400 hover:text-white text-sm">
-                サイトマップ
+                {t('sitemap')}
               </Link>
             </div>
           </div>

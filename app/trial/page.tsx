@@ -1,7 +1,12 @@
+'use client'
+
 import Image from 'next/image'
 import { TrialForm } from '@/components/forms/trial-form'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 
 export default function TrialPage() {
+  const { t } = useLanguage()
+  
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -21,10 +26,10 @@ export default function TrialPage() {
         <div className="relative h-full container mx-auto px-4 flex items-center">
           <div className="max-w-3xl text-white">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              無料体験に申し込む
+              {t('trialPageTitle')}
             </h1>
             <p className="text-xl md:text-2xl text-white/90">
-              実際の授業を体験して、プログラミング学習の楽しさを実感してください
+              {t('trialPageSubtitle')}
             </p>
           </div>
         </div>
@@ -36,7 +41,7 @@ export default function TrialPage() {
           <div className="max-w-3xl mx-auto">
             <div className="bg-white p-8 rounded-lg shadow-lg">
               <h2 className="text-2xl font-semibold mb-8 text-center">
-                無料体験のお申し込み
+                {t('trialFormTitle')}
               </h2>
               <TrialForm />
             </div>
@@ -48,31 +53,31 @@ export default function TrialPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            無料体験でできること
+            {t('trialBenefits')}
           </h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="bg-white p-8 rounded-lg shadow-lg">
               <h3 className="text-xl font-semibold mb-4 text-primary">
-                実際の授業を体験
+                {t('trialBenefit1')}
               </h3>
               <p className="text-gray-600">
-                実際の授業と同じ環境で、プログラミングの楽しさを体験できます。
+                {t('trialBenefit1Desc')}
               </p>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-lg">
               <h3 className="text-xl font-semibold mb-4 text-primary">
-                個別カウンセリング
+                {t('trialBenefit2')}
               </h3>
               <p className="text-gray-600">
-                お子様の興味や適性を確認し、最適なコースをご提案します。
+                {t('trialBenefit2Desc')}
               </p>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-lg">
               <h3 className="text-xl font-semibold mb-4 text-primary">
-                質問・相談
+                {t('trialBenefit3')}
               </h3>
               <p className="text-gray-600">
-                カリキュラムや料金など、気になることを何でもご相談いただけます。
+                {t('trialBenefit3Desc')}
               </p>
             </div>
           </div>

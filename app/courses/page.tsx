@@ -1,11 +1,15 @@
+'use client'
+
 import Image from 'next/image'
 import { CourseSelector } from '@/components/courses/course-selector'
-import { CurriculumTimeline } from '@/components/courses/curriculum-timeline'
 import { TestimonialsCarousel } from '@/components/courses/testimonials-carousel'
 import { ToolsGrid } from '@/components/courses/tools-grid'
 import { TrialButton } from '@/components/ui/trial-button'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 
 export default function CoursesPage() {
+  const { t } = useLanguage()
+  
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -25,14 +29,20 @@ export default function CoursesPage() {
         <div className="relative h-full container mx-auto px-4 flex items-center">
           <div className="max-w-3xl text-white">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              お子様に合わせた
-              <br />
-              最適なコース選択
+              {t('coursesHeroTitle').split('\n').map((line, i) => (
+                <span key={i}>
+                  {line}
+                  {i < t('coursesHeroTitle').split('\n').length - 1 && <br />}
+                </span>
+              ))}
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-white/90">
-              学年やレベルに応じて、
-              <br />
-              最適なプログラミング学習コースをご用意
+              {t('coursesHeroSubtitle').split('\n').map((line, i) => (
+                <span key={i}>
+                  {line}
+                  {i < t('coursesHeroSubtitle').split('\n').length - 1 && <br />}
+                </span>
+              ))}
             </p>
             <TrialButton />
           </div>
@@ -43,24 +53,14 @@ export default function CoursesPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            コースを選択
+            {t('courseSelection')}
           </h2>
           <CourseSelector />
         </div>
       </section>
 
-      {/* Curriculum Timeline */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            学習の流れ
-          </h2>
-          <CurriculumTimeline />
-        </div>
-      </section>
-
       {/* Tools Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <ToolsGrid />
         </div>
@@ -70,7 +70,7 @@ export default function CoursesPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            生徒・保護者様の声
+            {t('testimonials')}
           </h2>
           <TestimonialsCarousel />
         </div>
@@ -80,10 +80,10 @@ export default function CoursesPage() {
       <section className="bg-primary py-20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
-            まずは無料体験から始めましょう
+            {t('trialCTA')}
           </h2>
           <p className="text-white/90 text-xl mb-8">
-            実際の授業を体験して、プログラミング学習の楽しさを実感してください
+            {t('trialCTADesc')}
           </p>
           <TrialButton variant="outline" />
         </div>

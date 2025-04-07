@@ -1,39 +1,44 @@
-import { CheckCircle } from 'lucide-react'
+'use client'
 
-const timelineData = [
-  {
-    title: '基礎学習フェーズ',
-    duration: '2ヶ月',
-    items: [
-      'プログラミングの基本概念',
-      '論理的思考の育成',
-      'ブロックプログラミング入門',
-    ],
-  },
-  {
-    title: '実践学習フェーズ',
-    duration: '3ヶ月',
-    items: [
-      '実際のプログラミング言語に触れる',
-      '簡単なプログラムの作成',
-      'デバッグの基礎',
-    ],
-  },
-  {
-    title: 'プロジェクトフェーズ',
-    duration: '3ヶ月',
-    items: [
-      'オリジナルプロジェクトの計画',
-      'チーム作業の基礎',
-      '成果物の作成と発表',
-    ],
-  },
-]
+import { CheckCircle } from 'lucide-react'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 
 export function CurriculumTimeline() {
+  const { t } = useLanguage()
+  
+  const timelineData = [
+    {
+      title: t('basicPhase'),
+      duration: t('basicPhaseDuration'),
+      items: [
+        t('basicItem1'),
+        t('basicItem2'),
+        t('basicItem3'),
+      ],
+    },
+    {
+      title: t('practicalPhase'),
+      duration: t('practicalPhaseDuration'),
+      items: [
+        t('practicalItem1'),
+        t('practicalItem2'),
+        t('practicalItem3'),
+      ],
+    },
+    {
+      title: t('projectPhase'),
+      duration: t('projectPhaseDuration'),
+      items: [
+        t('projectItem1'),
+        t('projectItem2'),
+        t('projectItem3'),
+      ],
+    },
+  ]
+
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h3 className="text-2xl font-bold mb-8 text-center">学習の流れ</h3>
+      <h3 className="text-2xl font-bold mb-8 text-center">{t('timelineTitle')}</h3>
       <div className="relative">
         {/* Timeline line */}
         <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200" />

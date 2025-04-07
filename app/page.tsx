@@ -1,8 +1,14 @@
+'use client'
+
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { TrialButton } from '@/components/ui/trial-button'
+import { useLanguage } from "@/lib/hooks/useLanguage"
+import { curriculumTranslationMap } from "@/lib/i18n"
 
 export default function Home() {
+  const { t, language } = useLanguage()
+  
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section with Video Background */}
@@ -31,14 +37,20 @@ export default function Home() {
           <div className="container mx-auto px-4 h-full flex items-center">
             <div className="text-white max-w-2xl">
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                楽しみながら学ぶ
-                <br />
-                プログラミングの世界
+                {t('heroTitle').split('\n').map((line, i) => (
+                  <span key={i}>
+                    {line}
+                    {i < t('heroTitle').split('\n').length - 1 && <br />}
+                  </span>
+                ))}
               </h1>
               <p className="text-xl mb-8">
-                小学1年生から6年生まで、年齢に合わせた
-                <br />
-                カリキュラムで楽しく学べます
+                {t('heroSubtitle').split('\n').map((line, i) => (
+                  <span key={i}>
+                    {line}
+                    {i < t('heroSubtitle').split('\n').length - 1 && <br />}
+                  </span>
+                ))}
               </p>
               <TrialButton />
             </div>
@@ -50,25 +62,25 @@ export default function Home() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            TechKidsの3つの特徴
+            {t('featuresTitle')}
           </h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold mb-4 text-primary">創造力</h3>
+              <h3 className="text-xl font-semibold mb-4 text-primary">{t('creativity')}</h3>
               <p className="text-gray-600">
-                自分のアイデアをプログラミングで形にする経験を通じて、創造力を育みます。オリジナルのゲームやアプリケーションを作ることで、想像力が広がります。
+                {t('creativityDesc')}
               </p>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold mb-4 text-primary">論理的思考力</h3>
+              <h3 className="text-xl font-semibold mb-4 text-primary">{t('logicalThinking')}</h3>
               <p className="text-gray-600">
-                プログラミングの基本概念を学ぶことで、論理的に考える力を養います。問題を分解し、順序立てて解決する能力が身につきます。
+                {t('logicalThinkingDesc')}
               </p>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold mb-4 text-primary">問題解決力</h3>
+              <h3 className="text-xl font-semibold mb-4 text-primary">{t('problemSolving')}</h3>
               <p className="text-gray-600">
-                エラーの解決やデバッグを通じて、問題解決能力を身につけます。試行錯誤しながら、最適な解決策を見つける力が育ちます。
+                {t('problemSolvingDesc')}
               </p>
             </div>
           </div>
@@ -79,7 +91,7 @@ export default function Home() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            学年別カリキュラム
+            {t('curriculumTitle')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
             {[1, 2, 3, 4, 5, 6].map((grade) => (
@@ -88,13 +100,13 @@ export default function Home() {
                 className="p-4 bg-white rounded-lg shadow hover:shadow-lg transition-shadow"
               >
                 <h3 className="text-lg font-semibold text-center mb-2">
-                  {grade}年生
+                  {grade}{t('grade')}
                 </h3>
                 <ul className="text-sm space-y-2">
                   {getCurriculum(grade).map((item, index) => (
                     <li key={index} className="flex items-center">
                       <span className="w-2 h-2 bg-primary rounded-full mr-2" />
-                      {item}
+                      {language === 'ja' ? item : t(curriculumTranslationMap[item])}
                     </li>
                   ))}
                 </ul>
@@ -108,17 +120,19 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            保護者の方へ
+            {t('forParents')}
           </h2>
           <div className="max-w-3xl mx-auto">
-            <div className="aspect-w-16 aspect-h-9">
-              <iframe
-                src="https://www.youtube.com/embed/VIDEO_ID"
-                title="プログラミング教育の重要性"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full rounded-lg shadow-lg"
-              />
+            <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
+              <p className="text-lg mb-4">
+                {t('forParentsP1')}
+              </p>
+              <p className="text-lg mb-4">
+                {t('forParentsP2')}
+              </p>
+              <p className="text-lg">
+                {t('forParentsP3')}
+              </p>
             </div>
           </div>
         </div>

@@ -3,9 +3,15 @@
 import Link from 'next/link'
 import { Button } from '../ui/button'
 import { useState } from 'react'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { language, setLanguage, t } = useLanguage()
+  
+  const toggleLanguage = () => {
+    setLanguage(language === 'ja' ? 'en' : 'ja')
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md">
@@ -24,19 +30,24 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/courses" className="text-gray-600 hover:text-primary">
-              コース紹介
+              {t('courses')}
             </Link>
             <Link href="/curriculum" className="text-gray-600 hover:text-primary">
-              カリキュラム
+              {t('curriculum')}
             </Link>
             <Link href="/faq" className="text-gray-600 hover:text-primary">
-              よくある質問
+              {t('faq')}
             </Link>
-            <Button variant="outline" className="ml-4">
-              無料体験はこちら
-            </Button>
-            <button className="text-gray-600 hover:text-primary">
-              EN
+            <Link href="/trial">
+              <Button variant="outline" className="ml-4">
+                {t('trial')}
+              </Button>
+            </Link>
+            <button 
+              className="text-gray-600 hover:text-primary"
+              onClick={toggleLanguage}
+            >
+              {language === 'ja' ? 'EN' : 'JP'}
             </button>
           </nav>
 
@@ -78,25 +89,30 @@ export function Header() {
                 href="/courses"
                 className="text-gray-600 hover:text-primary px-4"
               >
-                コース紹介
+                {t('courses')}
               </Link>
               <Link
                 href="/curriculum"
                 className="text-gray-600 hover:text-primary px-4"
               >
-                カリキュラム
+                {t('curriculum')}
               </Link>
               <Link
                 href="/faq"
                 className="text-gray-600 hover:text-primary px-4"
               >
-                よくある質問
+                {t('faq')}
               </Link>
-              <Button variant="outline" className="mx-4">
-                無料体験はこちら
-              </Button>
-              <button className="text-gray-600 hover:text-primary px-4">
-                EN
+              <Link href="/trial">
+                <Button variant="outline" className="mx-4">
+                  {t('trial')}
+                </Button>
+              </Link>
+              <button 
+                className="text-gray-600 hover:text-primary px-4"
+                onClick={toggleLanguage}
+              >
+                {language === 'ja' ? 'EN' : 'JP'}
               </button>
             </div>
           </nav>
