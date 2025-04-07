@@ -1,14 +1,9 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { Button } from '@/components/ui/button'
-import { ButtonProps } from '@radix-ui/react-button'
+import { Button, ButtonProps } from '@/components/ui/button'
 
-interface TrialButtonProps extends ButtonProps {
-  variant?: 'default' | 'outline'
-}
-
-export function TrialButton({ variant = 'default', className, ...props }: TrialButtonProps) {
+export function TrialButton({ variant = 'default', className, ...props }: ButtonProps) {
   const router = useRouter()
 
   return (

@@ -16,7 +16,7 @@ const formSchema = z.object({
 })
 
 export function ContactForm() {
-  const { t, language } = useLanguage()
+  const { language } = useLanguage()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)

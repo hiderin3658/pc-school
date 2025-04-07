@@ -40,7 +40,7 @@ export function CourseSelector({ onCourseSelect }: CourseSelectorProps) {
   const recommendCourse = () => {
     if (!grade || !interest) return
 
-    let recommendedCourses = [...courses].map(course => ({
+    const recommendedCourses = [...courses].map(course => ({
       ...course,
       recommended: false,
     }))

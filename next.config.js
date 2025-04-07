@@ -56,10 +56,6 @@ const nextConfig = {
       ],
     },
   ],
-  experimental: {
-    optimizeFonts: true,
-    modern: true,
-  },
 }
 
 module.exports = nextConfig

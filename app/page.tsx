@@ -1,6 +1,5 @@
 'use client'
 
-import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { TrialButton } from '@/components/ui/trial-button'
 import { useLanguage } from "@/lib/hooks/useLanguage"

@@ -4,7 +4,7 @@ import { ContactForm } from '@/components/forms/contact-form'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 
 export default function ContactPage() {
-  const { t, language } = useLanguage()
+  const { language } = useLanguage()
   
   const pageTitle = language === 'ja' ? 'お問い合わせ' : 'Contact Us'
   const pageSubtitle = language === 'ja' 

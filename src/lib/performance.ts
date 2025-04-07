@@ -29,7 +29,7 @@ export function useIntersectionObserver(
 }
 
 // デバウンス関数
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
@@ -47,7 +47,7 @@ export function debounce<T extends (...args: any[]) => any>(
 }
 
 // メモ化されたコンポーネントのプロパティ比較
-export function shallowEqual(objA: any, objB: any): boolean {
+export function shallowEqual(objA: Record<string, unknown>, objB: Record<string, unknown>): boolean {
   if (objA === objB) {
     return true
   }

@@ -1,6 +1,6 @@
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 import { cn } from '@/lib/utils'
-import { ReactNode } from 'react'
+import { ReactNode, RefObject } from 'react'
 
 interface FadeInProps {
   children: ReactNode
@@ -26,7 +26,7 @@ export function FadeIn({
 
   return (
     <div
-      ref={targetRef as any}
+      ref={targetRef as RefObject<HTMLDivElement>}
       className={cn(
         'opacity-0 transition-all duration-700 ease-out',
         isIntersecting && 'opacity-100 transform-none',

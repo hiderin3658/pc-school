@@ -1,9 +1,24 @@
+'use client'
+
 import { useState } from 'react'
 import { FadeIn } from '@/components/animations/FadeIn'
 import { Modal } from '@/components/ui/Modal'
 import { TeacherDetail } from '@/components/teachers/TeacherDetail'
 
-const teachers = [
+interface Teacher {
+  id: number
+  name: string
+  role: string
+  specialties: string[]
+  experience: string
+  message: string
+  image: string
+  education: string[]
+  achievements: string[]
+  schedule: string[]
+}
+
+const teachers: Teacher[] = [
   {
     id: 1,
     name: '山田 太郎',
@@ -63,7 +78,7 @@ const teachers = [
 ]
 
 export default function TeachersPage() {
-  const [selectedTeacher, setSelectedTeacher] = useState(null)
+  const [selectedTeacher, setSelectedTeacher] = useState<Teacher | null>(null)
 
   return (
     <div className="py-20">

@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { FadeIn } from '@/components/animations/FadeIn'
 
+type SVGProps = React.SVGProps<SVGSVGElement>
+
 const navigation = {
   company: [
     { name: '会社概要', href: '#' },
@@ -24,7 +26,7 @@ const navigation = {
     {
       name: 'Twitter',
       href: '#',
-      icon: (props: any) => (
+      icon: (props: SVGProps) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
             fillRule="evenodd"
@@ -37,7 +39,7 @@ const navigation = {
     {
       name: 'YouTube',
       href: '#',
-      icon: (props: any) => (
+      icon: (props: SVGProps) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
             fillRule="evenodd"
@@ -50,7 +52,7 @@ const navigation = {
     {
       name: 'Instagram',
       href: '#',
-      icon: (props: any) => (
+      icon: (props: SVGProps) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
             fillRule="evenodd"
